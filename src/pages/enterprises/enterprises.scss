@@ -1,0 +1,26 @@
+.ion-ios-menu-outline{
+  margin-top:4px;
+}
+.title{
+  width:110%;
+}
+
+.list {
+  .item {
+    text-align:center;
+    padding-left: 0;
+    background-color:grey;
+
+    .item-inner {
+      padding-left: 10px;
+      font-size:12px;
+
+      .item-icon {
+        display:none;
+      }
+    }
+  }
+  .item:hover {
+    background-color:#fff;
+  }
+}

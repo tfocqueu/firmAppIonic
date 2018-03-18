@@ -1,0 +1,40 @@
+<div class="widthFilter filter-green">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Catégorie d'entreprise
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayCategEnt == false" (click)="onSelectCategEnt()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayCategEnt" (click)="onSelectCategEnt()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayCategEnt">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Catég Ent' class="select-button" #categ>
+            <ion-option *ngFor="let value of categEntHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-green btn btn-primary"
+                  (click)="addCategEnt(categ.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of categEnt; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteCategEnt(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

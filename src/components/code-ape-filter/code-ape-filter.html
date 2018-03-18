@@ -1,0 +1,40 @@
+<div class="widthFilter filter-yellow">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Activité (code APE)
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayCodeApeForm == false" (click)="onSelectCodeApe()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayCodeApeForm" (click)="onSelectCodeApe()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayCodeApeForm">
+    <ion-grid>
+      <ion-row>
+      <ion-col text-left>
+        <ion-select placeholder='Code APE' class="select-button" #ape>
+          <ion-option *ngFor="let value of codeApeHard; let i = index"> {{ value }} </ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button class="special-btn-orange btn btn-primary"
+                (click)="addCodeApe(ape.value);">
+          Ajouter
+        </button>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of codeApe; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteCodeApe(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

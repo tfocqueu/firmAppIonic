@@ -1,0 +1,12 @@
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let enterprise of listEnterprises" (click)="openEnterpriseDetails(enterprise)">
+      {{ enterprise.siren }}
+    </button>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
