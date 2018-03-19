@@ -1,0 +1,40 @@
+<div class="widthFilter filter-orange">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Chiffre d'affaires
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayCaForm == false" (click)="onSelectCa()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayCaForm" (click)="onSelectCa()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayCaForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder="Chiffre d'affaires" class="select-button" #ca>
+            <ion-option *ngFor="let value of caHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-orange btn btn-primary"
+                  (click)="addCa(ca.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of ca; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteCa(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

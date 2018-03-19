@@ -53,6 +53,14 @@ export class EnterprisesPage implements OnInit {
             this.listWorkforceEnt = workforce;
             this.fetchEnterprises();
         });
+        filterLinkService.loadTotalRevenueEntReceived$.subscribe( totalRevenue =>{
+            this.listTotalRevenueEnt = totalRevenue;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadRegionEntReceived$.subscribe( region => {
+            this.listRegionEnt = region;
+            this.fetchEnterprises();
+        });
     }
 
     ngOnInit(): void {

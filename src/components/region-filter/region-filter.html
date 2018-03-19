@@ -1,0 +1,40 @@
+<div class="widthFilter filter-orange">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Région
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayRegionForm == false" (click)="onSelectRegion()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayRegionForm" (click)="onSelectRegion()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayRegionForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Région' class="select-button" #region>
+            <ion-option *ngFor="let value of regionHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-orange btn btn-primary"
+                  (click)="addRegion(region.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of region; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteRegion(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

@@ -7,6 +7,8 @@ import { DepartmentFilterComponent } from './department-filter/department-filter
 import { CreationYearFilterComponent } from './creation-year-filter/creation-year-filter';
 import { LegalStatusFilterComponent } from './legal-status-filter/legal-status-filter';
 import { WorkforceFilterComponent } from './workforce-filter/workforce-filter';
+import { RegionFilterComponent } from './region-filter/region-filter';
+import { TotalRevenueFilterComponent } from './total-revenue-filter/total-revenue-filter';
 @NgModule({
 	declarations: [FilterComponent,
     CodeApeFilterComponent,
@@ -15,7 +17,9 @@ import { WorkforceFilterComponent } from './workforce-filter/workforce-filter';
     DepartmentFilterComponent,
     CreationYearFilterComponent,
     LegalStatusFilterComponent,
-    WorkforceFilterComponent],
+    WorkforceFilterComponent,
+    RegionFilterComponent,
+    TotalRevenueFilterComponent],
 	imports: [],
 	exports: [FilterComponent,
     CodeApeFilterComponent,
@@ -24,6 +28,8 @@ import { WorkforceFilterComponent } from './workforce-filter/workforce-filter';
     DepartmentFilterComponent,
     CreationYearFilterComponent,
     LegalStatusFilterComponent,
-    WorkforceFilterComponent]
+    WorkforceFilterComponent,
+    RegionFilterComponent,
+    TotalRevenueFilterComponent]
 })
 export class ComponentsModule {}

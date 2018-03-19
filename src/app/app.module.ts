@@ -32,6 +32,8 @@ import {DepartmentFilterComponent} from "../components/department-filter/departm
 import {CreationYearFilterComponent} from "../components/creation-year-filter/creation-year-filter";
 import {LegalStatusFilterComponent} from "../components/legal-status-filter/legal-status-filter";
 import {WorkforceFilterComponent} from "../components/workforce-filter/workforce-filter";
+import {RegionFilterComponent} from "../components/region-filter/region-filter";
+import {TotalRevenueFilterComponent} from "../components/total-revenue-filter/total-revenue-filter";
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -45,6 +47,8 @@ registerLocaleData(localeFr, 'fr');
         CreationYearFilterComponent,
         LegalStatusFilterComponent,
         WorkforceFilterComponent,
+        RegionFilterComponent,
+        TotalRevenueFilterComponent,
         EnterprisesPage,
         EnterpriseDetailsPage,
         MenuPage,
@@ -77,6 +81,8 @@ registerLocaleData(localeFr, 'fr');
         CreationYearFilterComponent,
         LegalStatusFilterComponent,
         WorkforceFilterComponent,
+        RegionFilterComponent,
+        TotalRevenueFilterComponent,
         EnterprisesPage,
         EnterpriseDetailsPage,
         MenuPage,
@@ -92,6 +98,8 @@ registerLocaleData(localeFr, 'fr');
         CreationYearFilterComponent,
         LegalStatusFilterComponent,
         WorkforceFilterComponent,
+        RegionFilterComponent,
+        TotalRevenueFilterComponent,
         StatusBar,
         SplashScreen,
         File,
