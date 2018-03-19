@@ -27,6 +27,11 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import {CodeApeFilterComponent} from "../components/code-ape-filter/code-ape-filter";
 import {BusinessCategoriesFilterComponent} from "../components/business-categories-filter/business-categories-filter";
+import {MunicipalityFilterComponent} from "../components/municipality-filter/municipality-filter";
+import {DepartmentFilterComponent} from "../components/department-filter/department-filter";
+import {CreationYearFilterComponent} from "../components/creation-year-filter/creation-year-filter";
+import {LegalStatusFilterComponent} from "../components/legal-status-filter/legal-status-filter";
+import {WorkforceFilterComponent} from "../components/workforce-filter/workforce-filter";
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -35,6 +40,11 @@ registerLocaleData(localeFr, 'fr');
         FilterComponent,
         CodeApeFilterComponent,
         BusinessCategoriesFilterComponent,
+        MunicipalityFilterComponent,
+        DepartmentFilterComponent,
+        CreationYearFilterComponent,
+        LegalStatusFilterComponent,
+        WorkforceFilterComponent,
         EnterprisesPage,
         EnterpriseDetailsPage,
         MenuPage,
@@ -62,6 +72,11 @@ registerLocaleData(localeFr, 'fr');
         FilterComponent,
         CodeApeFilterComponent,
         BusinessCategoriesFilterComponent,
+        MunicipalityFilterComponent,
+        DepartmentFilterComponent,
+        CreationYearFilterComponent,
+        LegalStatusFilterComponent,
+        WorkforceFilterComponent,
         EnterprisesPage,
         EnterpriseDetailsPage,
         MenuPage,
@@ -73,6 +88,10 @@ registerLocaleData(localeFr, 'fr');
         ApiFirmService,
         FilterLinkService,
         BusinessCategoriesFilterComponent,
+        DepartmentFilterComponent,
+        CreationYearFilterComponent,
+        LegalStatusFilterComponent,
+        WorkforceFilterComponent,
         StatusBar,
         SplashScreen,
         File,

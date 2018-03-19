@@ -1,0 +1,40 @@
+<div class="widthFilter filter-light-purple">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Statut Juridique
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayStatutForm == false" (click)="onSelectStatut()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayStatutForm" (click)="onSelectStatut()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayStatutForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Statut Juridique' class="select-button" #statut>
+            <ion-option *ngFor="let value of statutHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-light-purple btn btn-primary"
+                  (click)="addStatut(statut.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of statut; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteStatut(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

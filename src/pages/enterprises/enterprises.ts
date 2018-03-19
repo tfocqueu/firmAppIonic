@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Loading,LoadingController } from 'ionic-angular';
 import {ApiFirmService} from '../../app/api-firm.service';
 import { Enterprise } from '../../app/Model/enterprise';
 import { EnterpriseDetailsPage } from "../enterprise-details/enterprise-details";
@@ -12,22 +12,46 @@ import {FilterLinkService} from "../../app/filter-link.service";
 })
 export class EnterprisesPage implements OnInit {
     listEnterprises = [];
-    listCodeApe = [];
-    listCategEnterprise = [];
-    listAreaEnt = [];
+    listCodeApeEnt = [];
+    listCategEnt = [];
+    listDepartmentEnt = [];
     listMunicipalityEnt = [];
     listCreationYearEnt = [];
-    listLegalStatus = [];
+    listLegalStatusEnt = [];
     listWorkforceEnt = [];
-    listTotalRevenue = [];
-    listRegion = [];
+    listTotalRevenueEnt = [];
+    listRegionEnt = [];
     nbResult: number;
+    loader : Loading;
 
-    constructor(public navCtrl: NavController,private apiFirmService: ApiFirmService, private filterLinkService: FilterLinkService) {
+    constructor(public navCtrl: NavController, private apiFirmService: ApiFirmService, private filterLinkService: FilterLinkService, private loadingCtrl: LoadingController) {
         filterLinkService.loadCodeApeReceived$.subscribe(codeApe => {
-            this.listCodeApe = codeApe;
+            this.listCodeApeEnt = codeApe;
             this.fetchEnterprises();
-            console.log(codeApe);
+        });
+        filterLinkService.loadLoaderReceived$.subscribe(categ => {
+            this.listCategEnt = categ;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadDepartmentEntReceived$.subscribe(data => {
+            this.listDepartmentEnt = data;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadMunicipalityEntReceived$.subscribe(municipality => {
+            this.listMunicipalityEnt = municipality;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadCreationDateEntReceived$.subscribe( creationYear => {
+            this.listCreationYearEnt = creationYear;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadLegalStatusEntReceived$.subscribe( legalStatus =>{
+            this.listLegalStatusEnt = legalStatus;
+            this.fetchEnterprises();
+        });
+        filterLinkService.loadWorkforceEntReceived$.subscribe( workforce =>{
+            this.listWorkforceEnt = workforce;
+            this.fetchEnterprises();
         });
     }
 
@@ -37,9 +61,10 @@ export class EnterprisesPage implements OnInit {
 
     /* this function load enteprises with loader when user wait */
     fetchEnterprises() {
-        this.apiFirmService.getEnterpriseByParameters(this.listCodeApe, this.listCategEnterprise, this.listAreaEnt,
-            this.listMunicipalityEnt, this.listCreationYearEnt, this.listLegalStatus, this.listWorkforceEnt,
-            this.listTotalRevenue, this.listRegion).subscribe(data => {
+        this.createLoader();
+        this.apiFirmService.getEnterpriseByParameters(this.listCodeApeEnt, this.listCategEnt, this.listDepartmentEnt,
+            this.listMunicipalityEnt, this.listCreationYearEnt, this.listLegalStatusEnt, this.listWorkforceEnt,
+            this.listTotalRevenueEnt, this.listRegionEnt).subscribe(data => {
             this.listEnterprises = [];
             data['records'].forEach((value) => {
                 const enterprise = new Enterprise
@@ -52,9 +77,9 @@ export class EnterprisesPage implements OnInit {
                     value.fields.l4_normalisee);
                 this.listEnterprises.push(enterprise);
             });
-            console.log(this.listEnterprises);
             this.nbResult = this.listEnterprises.length;
             this.apiFirmService.updateNbResult(this.nbResult);
+            this.loader.dismissAll();
         });
     }
     openEnterpriseDetails(enterprise: Enterprise) {
@@ -62,14 +87,21 @@ export class EnterprisesPage implements OnInit {
     }
     doInfinite(infiniteScroll) {
         setTimeout(() => {
-            this.apiFirmService.getEnterpriseByParameters(this.listCodeApe, this.listCategEnterprise, this.listAreaEnt,
-                this.listMunicipalityEnt, this.listCreationYearEnt, this.listLegalStatus, this.listWorkforceEnt,
-                this.listTotalRevenue, this.listRegion).subscribe(data => {
+            this.apiFirmService.getEnterpriseByParameters(this.listCodeApeEnt, this.listCategEnt, this.listDepartmentEnt,
+                this.listMunicipalityEnt, this.listCreationYearEnt, this.listLegalStatusEnt, this.listWorkforceEnt,
+                this.listTotalRevenueEnt, this.listRegionEnt).subscribe(data => {
                 for (let i = 0; i < 30; i++) {
                     this.listEnterprises.push(this.listEnterprises.length);
                 }
                 infiniteScroll.complete();
             })
         }, 500);
+    }
+
+    createLoader(): void {
+        this.loader = this.loadingCtrl.create({
+            content: 'Veuillez Patienter ...',
+        });
+        this.loader.present();
     }
 }

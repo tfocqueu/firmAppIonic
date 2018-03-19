@@ -30,8 +30,8 @@ export class FilterComponent {
         this.filterLinkService.LoadCategEnterprise(categEnt);
     }
 
-    outputListArea(areaEnt) {
-        this.filterLinkService.LoadAreaEntreprise(areaEnt);
+    outputListDepartment(departmentEnt) {
+        this.filterLinkService.LoadDepartmentEntreprise(departmentEnt);
     }
 
     outputListMunicipality(municipalityEnt) {

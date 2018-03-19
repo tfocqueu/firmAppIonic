@@ -1,0 +1,40 @@
+<div class="widthFilter filter-purple">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Année de création
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayCreationYearForm == false" (click)="onSelectCreationYear()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayCreationYearForm" (click)="onSelectCreationYear()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayCreationYearForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Année de création' class="select-button" #creationYear>
+            <ion-option *ngFor="let value of creationYearHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-purple btn btn-primary"
+                  (click)="addCreationYear(creationYear.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of creationYear; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteCreationYear(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

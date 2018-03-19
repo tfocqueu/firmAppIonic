@@ -16,9 +16,10 @@ export class CodeApeFilterComponent implements OnInit {
     apeError = false;
     displayButton = false;
     resetAll: boolean;
-    @Output() outputCodeApe = new EventEmitter<{}>(); // #SEB  the value of this output is transmit to the app.componenent.ts
+    @Output() outputCodeApe = new EventEmitter<{}>(); // the value of this output is transmit to the filter.ts
+
     constructor(private apiFirmService: ApiFirmService, private http: HttpClient) {
-        /* we load the legal status in the select list of legal status in the html code with the data of openDataDof api */
+        /* we load the legal status in the select list of legal status in the html code with the data of openDatasoft api */
         this.getCodeApe().subscribe(data => {
             data['facet_groups'][0]['facets'].forEach((codeApe) => {
                 this.codeApeHard.push(codeApe['name']);

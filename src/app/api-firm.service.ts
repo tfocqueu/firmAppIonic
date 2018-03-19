@@ -22,9 +22,7 @@ export class ApiFirmService {
     workforce = '';
     totalrevenue = '';
     region = '';
-    loader = false;
-    private loadLoaderSource = new Subject<boolean>();
-    loadLoaderReceived$ = this.loadLoaderSource.asObservable();
+    bool=false;
     nbResult: number;
     private loadNbResultSource = new Subject<number>();
     loadNbResultReceived$ = this.loadNbResultSource.asObservable();

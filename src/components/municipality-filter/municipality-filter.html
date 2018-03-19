@@ -1,0 +1,40 @@
+<div class="widthFilter filter-dark-blue">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Commune
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayMunicipalityForm == false" (click)="onSelectMunicipality()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayMunicipalityForm" (click)="onSelectMunicipality()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayMunicipalityForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Commune' class="select-button" #municipality>
+            <ion-option *ngFor="let value of municipalityHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-dark-blue btn btn-primary"
+                  (click)="addMunicipality(municipality.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of municipality; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteMunicipality(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

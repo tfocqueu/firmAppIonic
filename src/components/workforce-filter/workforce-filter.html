@@ -1,0 +1,40 @@
+<div class="widthFilter filter-dark-blue">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Effectifs
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayEffectifsForm == false" (click)="onSelectEffectifs()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayEffectifsForm" (click)="onSelectEffectifs()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayEffectifsForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+          <ion-select placeholder='Effectifs' class="select-button" #effectifs>
+            <ion-option *ngFor="let value of effectifsHard; let i = index"> {{ value }} </ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-dark-blue btn btn-primary"
+                  (click)="addEffectifs(effectifs.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of effectifs; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteEffectifs(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

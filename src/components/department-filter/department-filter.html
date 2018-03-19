@@ -1,0 +1,38 @@
+<div class="widthFilter filter-blue">
+  <p class="title-filter">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left class="title-categ">
+          <ion-icon name="git-network"></ion-icon>
+          Département
+        </ion-col>
+        <ion-col text-right class="clickable icon-add">
+          <ion-icon name="add-circle" *ngIf="displayDepartmentForm == false" (click)="onSelectDepartment()"></ion-icon>
+          <ion-icon name="remove-circle" *ngIf="displayDepartmentForm" (click)="onSelectDepartment()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </p>
+  <div *ngIf="displayDepartmentForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-left>
+            <ion-input placeholder="Département" #department > </ion-input>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button class="special-btn-blue btn btn-primary"
+                  (click)="addDepartment(department.value);">
+            Ajouter
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ul>
+    <li *ngFor="let value of department; let i = index">
+      {{ value }}
+      <ion-icon name="remove-circle" class="clickable btn-remove" (click)="deleteDepartment(index)"></ion-icon>
+    </li>
+  </ul>
+</div>

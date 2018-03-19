@@ -7,8 +7,8 @@ export class FilterLinkService {
     loadCodeApeReceived$ = this.loadCodeApeSource.asObservable();
     private loadCategEntSource = new Subject<[string]>();
     loadLoaderReceived$ = this.loadCategEntSource.asObservable();
-    private loadAreaEntSource = new Subject<[string]>();
-    loadAreaEntReceived$ = this.loadAreaEntSource.asObservable();
+    private loadDepartmentEntSource = new Subject<[string]>();
+    loadDepartmentEntReceived$ = this.loadDepartmentEntSource.asObservable();
     private loadMunicipalityEntSource = new Subject<[string]>();
     loadMunicipalityEntReceived$ = this.loadMunicipalityEntSource.asObservable();
     private loadCreationYearEntSource = new Subject<[string]>();
@@ -38,8 +38,8 @@ export class FilterLinkService {
         this.loadCategEntSource.next(categEnt);
     }
 
-    LoadAreaEntreprise(areaEnt): void {
-        this.loadAreaEntSource.next(areaEnt);
+    LoadDepartmentEntreprise(DepartmentEnt): void {
+        this.loadDepartmentEntSource.next(DepartmentEnt);
     }
 
     LoadMunicipalityEntreprise(municipalityEnt): void {

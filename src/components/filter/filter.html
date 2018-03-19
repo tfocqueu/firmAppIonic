@@ -6,7 +6,7 @@
                                 <ion-title class="margin-title">Filtres</ion-title>
                             </ion-col>
                             <ion-col text-right>
-                                <ion-icon (click)="closeMenu()" class="clickable exit-top-marge"  name="exit"></ion-icon>
+                                <button menuClose class="exit-top-marge"> <ion-icon class="clickable exit-top-marge"  name="exit"></ion-icon> </button>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -15,6 +15,11 @@
                 <ion-list>
                     <code-ape-filter (outputCodeApe)="outputCodeApe($event)"></code-ape-filter>
                     <business-categories-filter (outputListCateg)="outputListCateg($event)"></business-categories-filter>
+                    <department-filter (outputListDepartment)="outputListDepartment($event)"> </department-filter>
+                    <municipality-filter (outputListMunicipality) = "outputListMunicipality($event)"></municipality-filter>
+                    <creation-year-filter (outputListCreationDate) = "outputListCreationDate($event)"></creation-year-filter>
+                    <legal-status-filter (outputListLegalStatus) = "outputListLegalStatus($event)"></legal-status-filter>
+                    <workforce-filter (outputWorkforceStatus) = "outputWorkforceStatus($event)"></workforce-filter>
                 </ion-list>
             </ion-content>
 </ion-menu>
