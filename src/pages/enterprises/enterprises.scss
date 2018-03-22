@@ -5,6 +5,13 @@
   width:110%;
 }
 
+app-enterprise.ion-page > ion-content{
+  margin-top: 34px;
+}
+[tabsPlacement=top] > .tabbar {
+  top: 46px !important;
+}
+
 .list {
   .item {
     text-align:center;

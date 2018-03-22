@@ -1,18 +1,30 @@
-<!--
-  Generated template for the ExportPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>export</ion-title>
+    <ion-title>Export</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            Export De données
+          </ion-card-header>
 
+          <ion-list>
+            <button ion-item>
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Jeu de données entier | CSV
+            </button>
+            <button ion-item>
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Jeu de données entier | Json
+            </button>
+            <button ion-item>
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Jeu de données entier | XLSX
+            </button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

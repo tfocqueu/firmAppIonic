@@ -22,6 +22,7 @@ export class ApiFirmService {
     workforce = '';
     totalrevenue = '';
     region = '';
+    nbFiltreActif = 0;
     bool=false;
     nbResult: number;
     private loadNbResultSource = new Subject<number>();
@@ -80,7 +81,7 @@ export class ApiFirmService {
 
     /* listCateg : the list of  enterprise categ filter */
     getMapByParameters(listCodeApe = [], listCategEnt = [], listDepartmentEnt = [], listMunicipalityEnt = [],
-                       listCreationYearEnt = [], listLegalStatusEnt = []): Observable<any> {
+                       listCreationYearEnt = [], listLegalStatusEnt = []): any  {
         this.parameters = '&q='; // init the list of parameters
         this.addFilter(listCodeApe, 'apet700', this.codeApe);
         this.addFilter(listCategEnt, 'categorie', this.categ);
@@ -88,7 +89,12 @@ export class ApiFirmService {
         this.addFilter(listMunicipalityEnt, 'libcom', this.municipality);
         this.addFilter(listCreationYearEnt, 'dcren', this.creationDate);
         this.addFilter(listLegalStatusEnt, 'nj', this.legalstatus);
-        return this.http.get(ApiFirmService.BASE_URL_MAP + this.parameters);
+        if (this.nbFiltreActif > 1) { /* we remove the last "AND" if we have more than one filter */
+            let lengthParam = 0;
+            lengthParam = this.parameters.length;
+            this.parameters = this.parameters.substring(0, lengthParam - 4);
+        }
+        return this.parameters;
     }
 
     getAllEnterprises(): Observable<Object> {
