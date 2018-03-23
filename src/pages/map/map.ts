@@ -67,7 +67,6 @@ export class MapPage {
       let data: any;
       data = this.apiFirmService.getMapByParameters(this.listCodeApe, this.listCategEnterprise, this.listDepartmentEnt,
           this.listMunicipalityEnt, this.listCreationYearEnt, this.listLegalStatus);
-      console.log(this.sanitizer.bypassSecurityTrustResourceUrl('https://public.opendatasoft.com/explore/embed/dataset/sirene/map/?q=&' + data));
       this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://public.opendatasoft.com/explore/embed/dataset/sirene/map/?q=' + data);
   }
 }

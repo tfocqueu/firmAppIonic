@@ -80,6 +80,7 @@ export class ApiFirmService {
     /* listCodeApe : the list of ape Code filter */
 
     /* listCateg : the list of  enterprise categ filter */
+
     getMapByParameters(listCodeApe = [], listCategEnt = [], listDepartmentEnt = [], listMunicipalityEnt = [],
                        listCreationYearEnt = [], listLegalStatusEnt = []): any  {
         this.parameters = '&q='; // init the list of parameters
@@ -89,6 +90,7 @@ export class ApiFirmService {
         this.addFilter(listMunicipalityEnt, 'libcom', this.municipality);
         this.addFilter(listCreationYearEnt, 'dcren', this.creationDate);
         this.addFilter(listLegalStatusEnt, 'nj', this.legalstatus);
+
         if (this.nbFiltreActif > 1) { /* we remove the last "AND" if we have more than one filter */
             let lengthParam = 0;
             lengthParam = this.parameters.length;
@@ -108,10 +110,14 @@ export class ApiFirmService {
 
     /* paramName : the variable string who concat params */
     addFilter(list, fieldName, paramName) {
+        let checkFirst = false;
+        let last = false;
+        let checkFirstLast = false;
         this.ind = 0;
+        paramName += '(';
         list.forEach((item, index) => {
             if (index !== 0) {
-                paramName += '+OR+';
+                paramName += ' OR ';
             }
             if (item !== '') {
                 paramName += fieldName + ':';
@@ -119,12 +125,20 @@ export class ApiFirmService {
                 this.ind++;
             }
         });
+        paramName += ')';
         if (list.length > 0) {
-            this.parameters += paramName;
-            if (this.ind >= list.length) {
-                this.parameters += '&';
+            if (!checkFirstLast) {
+                last = fieldName;
+                checkFirstLast = true;
             }
-
+            if (!checkFirst) {
+                this.nbFiltreActif++;
+                checkFirst = true;
+            }
+            this.parameters += paramName;
+            if (this.nbFiltreActif > 1) {
+                this.parameters += ' AND ';
+            }
         }
     }
     updateNbResult(data) {
